@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 public class TransferResource {
 
@@ -39,7 +41,7 @@ public class TransferResource {
   public TransferApiDto createTransfer(
       @RequestHeader(ResourceConstants.USER_HEADER) String userHeader,
       @RequestHeader(ResourceConstants.COMPANY_HEADER) String companyHeader,
-      @RequestBody CreateTransferApiDto createTransferApiDto)
+      @Valid @RequestBody CreateTransferApiDto createTransferApiDto)
       throws SpendeskException {
     return TransferMapper.toApi(
         transferService.create(

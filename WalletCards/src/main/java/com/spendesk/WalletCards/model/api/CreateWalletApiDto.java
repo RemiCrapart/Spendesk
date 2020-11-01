@@ -2,13 +2,14 @@ package com.spendesk.WalletCards.model.api;
 
 import com.spendesk.WalletCards.model.Currency;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public class CreateWalletApiDto {
 
-  private BigDecimal balance;
+  @NotNull private BigDecimal balance;
 
-  private Currency currency;
+  @NotNull private Currency currency;
 
   public CreateWalletApiDto() {}
 

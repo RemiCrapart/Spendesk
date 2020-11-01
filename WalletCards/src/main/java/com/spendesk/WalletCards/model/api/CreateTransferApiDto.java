@@ -2,21 +2,21 @@ package com.spendesk.WalletCards.model.api;
 
 import com.spendesk.WalletCards.model.EntityType;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public class CreateTransferApiDto {
-
-  private BigDecimal amountTransferred;
+  @NotNull private BigDecimal amountTransferred;
 
   private String conversionFee;
 
-  private String originEntityIdentifier;
+  @NotNull private String originEntityIdentifier;
 
-  private EntityType originEntityType;
+  @NotNull private EntityType originEntityType;
 
-  private String targetEntityIdentifier;
+  @NotNull private String targetEntityIdentifier;
 
-  private EntityType targetEntityType;
+  @NotNull private EntityType targetEntityType;
 
   public CreateTransferApiDto() {}
 
