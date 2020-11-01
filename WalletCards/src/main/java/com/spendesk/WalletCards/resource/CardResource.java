@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 
-// Peut être inutile si tout dans Wallet
 @RestController
 public class CardResource {
 
