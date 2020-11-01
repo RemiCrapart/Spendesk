@@ -1,0 +1,385 @@
+{
+	"info": {
+		"_postman_id": "9e4f68c1-f1f6-44ec-bd60-7609d01e364e",
+		"name": "TestSpendesk",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Wallet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"currentBalance\" : {\r\n        \"amount\" : \"50\",\r\n        \"currency\" : \"EUR\"\r\n    },\r\n    \"companyIdentifier\": \"2225\",\r\n    \"masterWallet\" : true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/wallets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"wallets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Wallet Company 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"currentBalance\" : {\r\n        \"amount\" : \"50\",\r\n        \"currency\" : \"EUR\"\r\n    },\r\n    \"companyIdentifier\": \"2225\",\r\n    \"masterWallet\" : true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/wallets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"wallets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List wallets",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/greetingCreate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"greetingCreate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List SPENDESK wallets",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Company-Id",
+						"value": "SPENDESK",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/wallets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"wallets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Card",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/wallets/5f9d358c9efda75c989d2c62/cards",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"wallets",
+						"5f9d358c9efda75c989d2c62",
+						"cards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List card",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/wallets/5f9d48bab0c77542c288bb9a/cards",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"wallets",
+						"5f9d48bab0c77542c288bb9a",
+						"cards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update status ACTIVE",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\"ACTIVE\"",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cards/5f9d35939efda75c989d2c63/card-status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cards",
+						"5f9d35939efda75c989d2c63",
+						"card-status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update status BLOCK",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\"BLOCK\"",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cards/5f9d35939efda75c989d2c63/card-status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cards",
+						"5f9d35939efda75c989d2c63",
+						"card-status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Card Load money",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "10",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cards/5f9d35939efda75c989d2c63/card-balance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cards",
+						"5f9d35939efda75c989d2c63",
+						"card-balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Card Unload money",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "-10",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cards/5f9d3743ebbc466875e49d6f/card-balance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cards",
+						"5f9d3743ebbc466875e49d6f",
+						"card-balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create transfer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Id",
+						"value": "123",
+						"type": "text"
+					},
+					{
+						"key": "Company-Id",
+						"value": "123456",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amountTransferred\" : 10,\r\n    \"originEntityId\" : \"\",\r\n    \"originEntityType\" : \"WALLET\",\r\n    \"targetEntityId\": \"\",\r\n    \"targetEntityType\": \"WALLET\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/transfers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transfers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fixer test",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://data.fixer.io/api/latest?access_key=0c9acc9eb13cef9f3d4b72a6f6df18e9&symbols=USD,GBP",
+					"protocol": "http",
+					"host": [
+						"data",
+						"fixer",
+						"io"
+					],
+					"path": [
+						"api",
+						"latest"
+					],
+					"query": [
+						{
+							"key": "access_key",
+							"value": "0c9acc9eb13cef9f3d4b72a6f6df18e9"
+						},
+						{
+							"key": "symbols",
+							"value": "USD,GBP"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "fa20be3f-6fdc-4bd4-bbc4-1d7d4827a5e9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2aadd6e6-874a-46c3-9d1d-293dbe2b4aab",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
