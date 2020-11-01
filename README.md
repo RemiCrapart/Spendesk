@@ -24,6 +24,21 @@ The application should run :)
 Documentation of the endpoint is available on openAPI format when the app is running -> http://localhost:8080/v2/api-docs
 If you want to see it with a super UI you can go to https://editor.swagger.io/ and copy/paste the openAPI.
 
+Card API errors :
+CARDBUS01 : This card id doesn't not exit
+CARDBUS02 : There is not enough money on the card
+CARDBUS03 : The card is not active
+CARDBUS04 : This card doesn't belong to this user
+
+Wallet API errors :
+WALLBUS01 : This wallet id [walletId] doesn't not exit
+WALLBUS02 : This wallet doesn't belong to this company
+WALLBUS03 : There is not enough money on the wallet
+
+Transfer API errors :
+TRANBUS01 : Transfer from [transfer.getOriginEntityType()] is not allowed
+TRANBUS02 : Not possible to transfer if the origin is not in EUR
+
 # Testing
 
 Postman collection is available on the root repo : TestSpendesk.postman_collection.json
