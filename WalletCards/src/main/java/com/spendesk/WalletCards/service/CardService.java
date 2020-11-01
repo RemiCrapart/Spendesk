@@ -100,7 +100,7 @@ public class CardService {
       throws SpendeskException {
     if (!card.getUserIdentifier().equals(businessContext.getUserId())) {
       throw new SpendeskException(
-          "This card doesn't belong to this user", "CARDSEC02", HttpStatus.NOT_FOUND);
+          "This card doesn't belong to this user", "CARDBUS04", HttpStatus.NOT_FOUND);
     }
   }
 
@@ -135,7 +135,7 @@ public class CardService {
       return cardRepository.save(card);
 
     } else {
-      throw new SpendeskException("The card is not active", "CARDBUS02", HttpStatus.BAD_REQUEST);
+      throw new SpendeskException("The card is not active", "CARDBUS03", HttpStatus.BAD_REQUEST);
     }
   }
 

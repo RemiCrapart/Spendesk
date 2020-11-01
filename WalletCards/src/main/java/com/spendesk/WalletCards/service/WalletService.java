@@ -47,20 +47,18 @@ public class WalletService {
     Optional wallet = walletRepository.findById(walletId);
     if (!wallet.isPresent()) {
       throw new SpendeskException(
-          "This wallet id doesn't not exit", "WALLBUS01", HttpStatus.NOT_FOUND);
+          "This wallet id [" + walletId + "]doesn't not exit", "WALLBUS01", HttpStatus.NOT_FOUND);
     }
     return walletRepository.findById(walletId).get();
   }
 
-
   /*
   Check if logged company user is the same than the wallet we are using
    */
-  public void checkAccess(Wallet wallet, BusinessContext businessContext)
-          throws SpendeskException {
+  public void checkAccess(Wallet wallet, BusinessContext businessContext) throws SpendeskException {
     if (!wallet.getCompanyIdentifier().equals(businessContext.getCompanyId())) {
       throw new SpendeskException(
-              "This wallet doesn't belong to this company", "TRANSEC01", HttpStatus.NOT_FOUND);
+          "This wallet doesn't belong to this company", "WALLBUS02", HttpStatus.NOT_FOUND);
     }
   }
 
@@ -80,7 +78,7 @@ public class WalletService {
     /// Check wallet balance will not be negative
     if (newBalance.signum() < 0) {
       throw new SpendeskException(
-          "There is not enough money on the wallet", "WALLBUS02", HttpStatus.BAD_REQUEST);
+          "There is not enough money on the wallet", "WALLBUS03", HttpStatus.BAD_REQUEST);
     }
     wallet.setBalance(newBalance);
 
