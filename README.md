@@ -23,7 +23,7 @@ The application should run :)
 
 Documentation of the endpoint is available on openAPI format when the app is running -> http://localhost:8080/v2/api-docs
 If you want to see it with a super UI you can go to https://editor.swagger.io/ and copy/paste the openAPI.
-
+Test
 Card API errors :
 CARDBUS01 : This card id doesn't not exit
 CARDBUS02 : There is not enough money on the card
