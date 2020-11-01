@@ -4,6 +4,7 @@
 # How to install
 
 The app is running with openjdk15 and have embedded mongodb so you just need to install openJdk to make it run.
+Clone the project or take a zip and put it somewhere, on the root folder you have the jar WalletCards-0.0.1-SNAPSHOT.jar to launch
 
 ### Install java
 
@@ -12,7 +13,8 @@ Download java following your machine : https://jdk.java.net/15/ and unzip it som
 # How to run
 
 Now you have unzip openjdk15 go directly to the bin folder(jdk-15\bin), it will avoid to configure windows env, bash profile etc...
-You are on the bin folder, execute the following command to launch the app (The app is in the root folder WalletCards-0.0.1-SNAPSHOT.jar) :
+
+You are on the bin folder, execute the following command to launch the app :
 "java -jar pathOfTheApplication" so for example : "java -jar C:\Spendesk\WalletCards-0.0.1-SNAPSHOT.jar"
 
 The application should run :)
