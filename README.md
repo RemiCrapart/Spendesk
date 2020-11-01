@@ -28,7 +28,8 @@ If you want to see it with a super UI you can go to https://editor.swagger.io/ a
 
 Postman collection is available on the root repo : TestSpendesk.postman_collection.json
 
-To install postman : https://www.postman.com/downloads/ then on the left corner you have a "Import" button to import collection.
+To install postman : https://www.postman.com/downloads/ then on the left corner you have a "Import" button to import collection. It's not automatic test that you can launch,
+you need to manually take output from one request to put in another one.
 
 
 # Scope
