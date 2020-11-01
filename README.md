@@ -12,7 +12,7 @@ Download java following your machine : https://jdk.java.net/15/ and unzip it som
 
 # How to run
 
-Now you have unzip openjdk15 go directly to the bin folder(jdk-15\bin), it will avoid to configure windows env, bash profile etc...
+Now you have unzip openjdk15 open a command prompt and go to the bin folder (jdk-15\bin), it will avoid to configure windows env, bash profile etc...
 
 You are on the bin folder, execute the following command to launch the app :
 "java -jar pathOfTheApplication" so for example : "java -jar C:\Spendesk\WalletCards-0.0.1-SNAPSHOT.jar"
