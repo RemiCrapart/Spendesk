@@ -37,5 +37,5 @@ Postman collection is available on the root repo : TestSpendesk.postman_collecti
 
 ## Potential feature to do
 - Audit table when we load/unload money
-- External creation of technical wallet + put fee rate as a properties
+- External creation of technical wallet + put fee rate as a property
 
