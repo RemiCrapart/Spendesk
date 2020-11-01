@@ -24,7 +24,8 @@ public class WalletServiceTest {
 
   public static final ObjectId ID = new ObjectId();
 
-  public static final BusinessContext businessContext = new BusinessContext("123", "123");
+  public static final BusinessContext businessContext =
+      new BusinessContext("123", COMPANY_IDENTIFIER);
 
   @Autowired private WalletService walletService;
 
@@ -91,6 +92,23 @@ public class WalletServiceTest {
         SpendeskException.class,
         () -> {
           walletService.updateBalance(ID.toString(), new BigDecimal(-100), businessContext);
+        });
+  }
+
+  @Test()
+  public void checkAccess_shouldSucceed() throws SpendeskException {
+    Wallet wallet = walletService.create(initWallet());
+
+    walletService.checkAccess(wallet, businessContext);
+  }
+
+  @Test()
+  public void checkAccess_shouldFail() {
+    Wallet wallet = walletService.create(initWallet());
+    Assertions.assertThrows(
+        SpendeskException.class,
+        () -> {
+          walletService.checkAccess(wallet, new BusinessContext("123", "123"));
         });
   }
 

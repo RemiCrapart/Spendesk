@@ -42,7 +42,7 @@ public class TransferResource {
       @RequestBody CreateTransferApiDto createTransferApiDto)
       throws SpendeskException {
     return TransferMapper.toApi(
-        transferService.createTransfer(
+        transferService.create(
             TransferMapper.toEntity(
                 createTransferApiDto, new BusinessContext(userHeader, companyHeader)),
             new BusinessContext(userHeader, companyHeader)));

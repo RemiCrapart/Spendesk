@@ -42,7 +42,7 @@ public class TransferService {
     this.walletService = walletService;
   }
 
-  public Transfer createTransfer(Transfer transfer, BusinessContext businessContext)
+  public Transfer create(Transfer transfer, BusinessContext businessContext)
       throws SpendeskException {
 
     // check that origin and target are wallet (scope limitation)

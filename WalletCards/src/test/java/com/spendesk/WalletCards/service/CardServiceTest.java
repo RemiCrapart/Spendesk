@@ -31,6 +31,9 @@ public class CardServiceTest {
 
   public static final String USER_ID = "123456";
 
+  public static final BusinessContext businessContext =
+      new BusinessContext(USER_ID, COMPANY_IDENTIFIER);
+
   @Autowired private CardService cardService;
 
   @Autowired private WalletService walletService;
@@ -49,7 +52,7 @@ public class CardServiceTest {
 
   @Test
   public void create_shouldSucceed() throws Exception {
-    Card card = cardService.create(ID.toString(), new BusinessContext(USER_ID, COMPANY_IDENTIFIER));
+    Card card = cardService.create(ID.toString(), businessContext);
     assertThat(card).isNotNull();
   }
 
@@ -58,28 +61,24 @@ public class CardServiceTest {
     Assertions.assertThrows(
         SpendeskException.class,
         () -> {
-          Card card = cardService.create("1234", new BusinessContext("12345", COMPANY_IDENTIFIER));
+          Card card = cardService.create("1234", businessContext);
         });
   }
 
   @Test
-  public void create_shouldFailWithWrongUser() {
+  public void create_shouldFailWithWrongCompany() {
     Assertions.assertThrows(
         SpendeskException.class,
         () -> {
-          Card card = cardService.create("1234", new BusinessContext(USER_ID, COMPANY_IDENTIFIER));
+          Card card = cardService.create(ID.toString(), new BusinessContext(USER_ID, "123"));
         });
   }
 
   @Test
   public void updateBalance_shouldSucceed() throws Exception {
-    Card card = cardService.create(ID.toString(), new BusinessContext(USER_ID, COMPANY_IDENTIFIER));
+    Card card = cardService.create(ID.toString(), businessContext);
 
-    card =
-        cardService.updateBalance(
-            card.getId().toString(),
-            new BigDecimal(20),
-            new BusinessContext(USER_ID, COMPANY_IDENTIFIER));
+    card = cardService.updateBalance(card.getId().toString(), new BigDecimal(20), businessContext);
 
     Wallet wallet = walletService.findById(card.getWalletIdentifier());
     assertThat(card.getBalance()).isEqualTo(new BigDecimal(20));
@@ -88,35 +87,29 @@ public class CardServiceTest {
 
   @Test
   public void updateBalance_shouldFailWithCardNotEnoughMoney() throws Exception {
-    Card card = cardService.create(ID.toString(), new BusinessContext(USER_ID, COMPANY_IDENTIFIER));
+    Card card = cardService.create(ID.toString(), businessContext);
 
     Assertions.assertThrows(
         SpendeskException.class,
         () -> {
-          cardService.updateBalance(
-              card.getId().toString(),
-              new BigDecimal(-100),
-              new BusinessContext(USER_ID, COMPANY_IDENTIFIER));
+          cardService.updateBalance(card.getId().toString(), new BigDecimal(-100), businessContext);
         });
   }
 
   @Test
   public void updateBalance_shouldFailWithWalletNotEnoughMoney() throws Exception {
-    Card card = cardService.create(ID.toString(), new BusinessContext(USER_ID, COMPANY_IDENTIFIER));
+    Card card = cardService.create(ID.toString(), businessContext);
 
     Assertions.assertThrows(
         SpendeskException.class,
         () -> {
-          cardService.updateBalance(
-              card.getId().toString(),
-              new BigDecimal(100),
-              new BusinessContext(USER_ID, COMPANY_IDENTIFIER));
+          cardService.updateBalance(card.getId().toString(), new BigDecimal(100), businessContext);
         });
   }
 
   @Test
   public void updateStatus_shouldSucceedWithActive() throws Exception {
-    Card card = cardService.create(ID.toString(), new BusinessContext(USER_ID, COMPANY_IDENTIFIER));
+    Card card = cardService.create(ID.toString(), businessContext);
 
     card =
         cardService.updateStatus(
@@ -128,17 +121,13 @@ public class CardServiceTest {
 
   @Test
   public void updateStatus_shouldSucceedWithBlock() throws Exception {
-    Card card = cardService.create(ID.toString(), new BusinessContext(USER_ID, COMPANY_IDENTIFIER));
+    Card card = cardService.create(ID.toString(), businessContext);
     cardService.updateBalance(
         card.getId().toString(),
         new BigDecimal(10),
         new BusinessContext(USER_ID, COMPANY_IDENTIFIER));
 
-    card =
-        cardService.updateStatus(
-            card.getId().toString(),
-            CardStatus.BLOCK,
-            new BusinessContext(USER_ID, COMPANY_IDENTIFIER));
+    card = cardService.updateStatus(card.getId().toString(), CardStatus.BLOCK, businessContext);
 
     assertThat(card.getStatus()).isEqualTo(CardStatus.BLOCK);
     assertThat(card.getBalance()).isEqualTo(new BigDecimal(0));
@@ -153,8 +142,7 @@ public class CardServiceTest {
     Assertions.assertThrows(
         SpendeskException.class,
         () -> {
-          cardService.updateStatus(
-              "12345", CardStatus.ACTIVE, new BusinessContext(USER_ID, COMPANY_IDENTIFIER));
+          cardService.updateStatus("12345", CardStatus.ACTIVE, businessContext);
         });
   }
 }
