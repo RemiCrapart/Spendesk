@@ -9,10 +9,16 @@
 			"name": "Create Wallet",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Company-Id",
+						"value": "1",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"currentBalance\" : {\r\n        \"amount\" : \"50\",\r\n        \"currency\" : \"EUR\"\r\n    },\r\n    \"companyIdentifier\": \"2225\",\r\n    \"masterWallet\" : true\r\n}",
+					"raw": "{\r\n    \"balance\" : \"50\",\r\n    \"currency\" : \"USD\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -20,7 +26,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/wallets",
+					"raw": "http://localhost:8080/wallets?Company-Id=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -28,6 +34,12 @@
 					"port": "8080",
 					"path": [
 						"wallets"
+					],
+					"query": [
+						{
+							"key": "Company-Id",
+							"value": "1"
+						}
 					]
 				}
 			},
@@ -37,10 +49,16 @@
 			"name": "Create Wallet Company 2",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Company-Id",
+						"value": "2",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"currentBalance\" : {\r\n        \"amount\" : \"50\",\r\n        \"currency\" : \"EUR\"\r\n    },\r\n    \"companyIdentifier\": \"2225\",\r\n    \"masterWallet\" : true\r\n}",
+					"raw": "{\r\n    \"balance\" : \"50\",\r\n    \"currency\" : \"EUR\"\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -64,17 +82,23 @@
 		{
 			"name": "List wallets",
 			"request": {
-				"method": "POST",
-				"header": [],
+				"method": "GET",
+				"header": [
+					{
+						"key": "Company-Id",
+						"value": "1",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "http://localhost:8080/greetingCreate",
+					"raw": "http://localhost:8080/wallets",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"greetingCreate"
+						"wallets"
 					]
 				}
 			},
@@ -109,7 +133,18 @@
 			"name": "Create Card",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Company-Id",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "User-id",
+						"value": "test",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "",
@@ -120,7 +155,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/wallets/5f9d358c9efda75c989d2c62/cards",
+					"raw": "http://localhost:8080/wallets/5f9ecba86aa00513e4e79ee9/cards",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -128,7 +163,7 @@
 					"port": "8080",
 					"path": [
 						"wallets",
-						"5f9d358c9efda75c989d2c62",
+						"5f9ecba86aa00513e4e79ee9",
 						"cards"
 					]
 				}
@@ -139,9 +174,15 @@
 			"name": "List card",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Company-id",
+						"value": "1",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "http://localhost:8080/wallets/5f9d48bab0c77542c288bb9a/cards",
+					"raw": "http://localhost:8080/wallets/5f9ecaa33318661f887f73a7/cards",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -149,7 +190,7 @@
 					"port": "8080",
 					"path": [
 						"wallets",
-						"5f9d48bab0c77542c288bb9a",
+						"5f9ecaa33318661f887f73a7",
 						"cards"
 					]
 				}
@@ -160,7 +201,18 @@
 			"name": "Update status ACTIVE",
 			"request": {
 				"method": "PATCH",
-				"header": [],
+				"header": [
+					{
+						"key": "Company-id",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "User-id",
+						"value": "test",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "\"ACTIVE\"",
@@ -171,7 +223,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/cards/5f9d35939efda75c989d2c63/card-status",
+					"raw": "http://localhost:8080/cards/5f9ecc1c6aa00513e4e79eec/card-status",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -179,7 +231,7 @@
 					"port": "8080",
 					"path": [
 						"cards",
-						"5f9d35939efda75c989d2c63",
+						"5f9ecc1c6aa00513e4e79eec",
 						"card-status"
 					]
 				}
@@ -190,7 +242,18 @@
 			"name": "Update status BLOCK",
 			"request": {
 				"method": "PATCH",
-				"header": [],
+				"header": [
+					{
+						"key": "Company-Id",
+						"value": "1",
+						"equals": true
+					},
+					{
+						"key": "User-id",
+						"value": "test",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "\"BLOCK\"",
@@ -201,7 +264,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/cards/5f9d35939efda75c989d2c63/card-status",
+					"raw": "http://localhost:8080/cards/5f9ecc1c6aa00513e4e79eec/card-status",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -209,7 +272,7 @@
 					"port": "8080",
 					"path": [
 						"cards",
-						"5f9d35939efda75c989d2c63",
+						"5f9ecc1c6aa00513e4e79eec",
 						"card-status"
 					]
 				}
@@ -220,7 +283,18 @@
 			"name": "Card Load money",
 			"request": {
 				"method": "PATCH",
-				"header": [],
+				"header": [
+					{
+						"key": "Company-id",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "User-id",
+						"value": "test",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "10",
@@ -231,7 +305,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/cards/5f9d35939efda75c989d2c63/card-balance",
+					"raw": "http://localhost:8080/cards/5f9ecc1c6aa00513e4e79eec/card-balance",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -239,7 +313,7 @@
 					"port": "8080",
 					"path": [
 						"cards",
-						"5f9d35939efda75c989d2c63",
+						"5f9ecc1c6aa00513e4e79eec",
 						"card-balance"
 					]
 				}
@@ -250,7 +324,18 @@
 			"name": "Card Unload money",
 			"request": {
 				"method": "PATCH",
-				"header": [],
+				"header": [
+					{
+						"key": "Company-id",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "User-id",
+						"value": "test",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "-10",
@@ -261,7 +346,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/cards/5f9d3743ebbc466875e49d6f/card-balance",
+					"raw": "http://localhost:8080/cards/5f9ecc1c6aa00513e4e79eec/card-balance",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -269,7 +354,7 @@
 					"port": "8080",
 					"path": [
 						"cards",
-						"5f9d3743ebbc466875e49d6f",
+						"5f9ecc1c6aa00513e4e79eec",
 						"card-balance"
 					]
 				}
@@ -282,19 +367,19 @@
 				"method": "POST",
 				"header": [
 					{
-						"key": "User-Id",
-						"value": "123",
+						"key": "Company-Id",
+						"value": "1",
 						"type": "text"
 					},
 					{
-						"key": "Company-Id",
-						"value": "123456",
+						"key": "User-Id",
+						"value": "test",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"amountTransferred\" : 10,\r\n    \"originEntityId\" : \"\",\r\n    \"originEntityType\" : \"WALLET\",\r\n    \"targetEntityId\": \"\",\r\n    \"targetEntityType\": \"WALLET\"\r\n}",
+					"raw": "{\r\n    \"amountTransferred\" : 10,\r\n    \"originEntityIdentifier\" : \"5f9ecba86aa00513e4e79ee9\",\r\n    \"originEntityType\" : \"WALLET\",\r\n    \"targetEntityIdentifier\": \"5f9ecbad6aa00513e4e79eea\",\r\n    \"targetEntityType\": \"WALLET\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
