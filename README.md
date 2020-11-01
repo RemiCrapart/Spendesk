@@ -25,3 +25,17 @@ If you want to see it with a super UI you can go to https://editor.swagger.io/ a
 # Testing
 
 Postman collection is available on the root repo : TestSpendesk.postman_collection.json
+
+# Scope
+
+## Current functional limitation : 
+- you can do transfer only if the origin is in EUR because of api limitation
+- you can do transfer only between wallet
+
+## Added feature
+- userIdentifier store in Transfer model to keep track of the user
+
+## Potential feature to do
+- Audit table when we load/unload money
+- External creation of technical wallet + put fee rate as a properties
+
