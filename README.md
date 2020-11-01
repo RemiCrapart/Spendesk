@@ -34,7 +34,7 @@ To install postman : https://www.postman.com/downloads/ then on the left corner 
 # Scope
 
 ## Current functional limitation : 
-- you can do transfer only if the origin is in EUR because of api limitation
+- you can do transfer only if the origin is in EUR because of fixer.io free limitation
 - you can do transfer only between wallet
 
 ## Added feature
