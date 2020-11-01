@@ -75,7 +75,7 @@ public class WalletService {
     BigDecimal currentBalance = wallet.getBalance();
     BigDecimal newBalance = currentBalance.add(amount);
 
-    /// Check wallet balance will not be negative
+    // Check wallet balance will not be negative
     if (newBalance.signum() < 0) {
       throw new SpendeskException(
           "There is not enough money on the wallet", "WALLBUS03", HttpStatus.BAD_REQUEST);
