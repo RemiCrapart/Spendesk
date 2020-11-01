@@ -8,7 +8,7 @@ public class TransferApiDto {
 
   private BigDecimal amountTransferred;
 
-  private String conversionFee;
+  private BigDecimal conversionFee;
 
   private String id;
 
@@ -57,11 +57,11 @@ public class TransferApiDto {
     return this;
   }
 
-  public String getConversionFee() {
+  public BigDecimal getConversionFee() {
     return conversionFee;
   }
 
-  public TransferApiDto setConversionFee(String conversionFee) {
+  public TransferApiDto setConversionFee(BigDecimal conversionFee) {
     this.conversionFee = conversionFee;
     return this;
   }

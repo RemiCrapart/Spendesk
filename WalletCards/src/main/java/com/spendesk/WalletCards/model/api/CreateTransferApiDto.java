@@ -8,8 +8,6 @@ import java.math.BigDecimal;
 public class CreateTransferApiDto {
   @NotNull private BigDecimal amountTransferred;
 
-  private String conversionFee;
-
   @NotNull private String originEntityIdentifier;
 
   @NotNull private EntityType originEntityType;
@@ -44,15 +42,6 @@ public class CreateTransferApiDto {
 
   public CreateTransferApiDto setAmountTransferred(BigDecimal amountTransferred) {
     this.amountTransferred = amountTransferred;
-    return this;
-  }
-
-  public String getConversionFee() {
-    return conversionFee;
-  }
-
-  public CreateTransferApiDto setConversionFee(String conversionFee) {
-    this.conversionFee = conversionFee;
     return this;
   }
 

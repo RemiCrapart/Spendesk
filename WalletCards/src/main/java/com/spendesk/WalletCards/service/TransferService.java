@@ -118,7 +118,9 @@ public class TransferService {
             .getBody();
 
     BigDecimal initialAmount = transfer.getAmountTransferred();
-    return initialAmount.multiply(fixerRatesClientDto.getRates().get(transfer.getTargetCurrency()));
+    BigDecimal conversionFee = fixerRatesClientDto.getRates().get(transfer.getTargetCurrency());
+    transfer.setConversionFee(conversionFee);
+    return initialAmount.multiply(conversionFee);
   }
 
   /*

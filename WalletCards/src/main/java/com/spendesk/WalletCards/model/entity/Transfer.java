@@ -10,7 +10,7 @@ public class Transfer {
 
   private BigDecimal amountTransferred;
 
-  private String conversionFee;
+  private BigDecimal conversionFee;
 
   @Id private ObjectId id;
 
@@ -84,11 +84,11 @@ public class Transfer {
     return this;
   }
 
-  public String getConversionFee() {
+  public BigDecimal getConversionFee() {
     return conversionFee;
   }
 
-  public Transfer setConversionFee(String conversionFee) {
+  public Transfer setConversionFee(BigDecimal conversionFee) {
     this.conversionFee = conversionFee;
     return this;
   }
