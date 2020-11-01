@@ -38,7 +38,7 @@ To install postman : https://www.postman.com/downloads/ then on the left corner 
 - you can do transfer only between wallet
 
 ## Added feature
-- userIdentifier store in Transfer model to keep track of the user
+- userIdentifier stored in Transfer model to keep track of the user
 
 ## Potential features to do
 - Audit table when we load/unload money
