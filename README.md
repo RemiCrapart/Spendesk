@@ -39,6 +39,8 @@ Transfer API errors :
 - TRANBUS01 : Transfer from [transfer.getOriginEntityType()] is not allowed
 - TRANBUS02 : Not possible to transfer if the origin is not in EUR
 
+Tech errors :
+- SPENTEC01 : Missing headers or bad input
 # Testing
 
 Postman collection is available on the root repo : TestSpendesk.postman_collection.json
