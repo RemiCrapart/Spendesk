@@ -37,7 +37,7 @@ Postman collection is available on the root repo : TestSpendesk.postman_collecti
 ## Added feature
 - userIdentifier store in Transfer model to keep track of the user
 
-## Potential feature to do
+## Potential features to do
 - Audit table when we load/unload money
 - External creation of technical wallet + put fee rate as a property
 
