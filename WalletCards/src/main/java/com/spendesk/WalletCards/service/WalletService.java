@@ -52,6 +52,18 @@ public class WalletService {
     return walletRepository.findById(walletId).get();
   }
 
+
+  /*
+  Check if logged company user is the same than the wallet we are using
+   */
+  public void checkAccess(Wallet wallet, BusinessContext businessContext)
+          throws SpendeskException {
+    if (!wallet.getCompanyIdentifier().equals(businessContext.getCompanyId())) {
+      throw new SpendeskException(
+              "This wallet doesn't belong to this company", "TRANSEC01", HttpStatus.NOT_FOUND);
+    }
+  }
+
   public Wallet update(Wallet wallet) {
     return walletRepository.save(wallet);
   }

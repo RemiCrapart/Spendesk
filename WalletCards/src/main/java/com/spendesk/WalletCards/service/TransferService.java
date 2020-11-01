@@ -21,6 +21,7 @@ import java.util.Arrays;
 @Component
 public class TransferService {
 
+  // Could be put in a properties
   public static final BigDecimal FEE_RATE = new BigDecimal(2.9);
 
   Logger logger = LoggerFactory.getLogger(TransferService.class);
@@ -62,7 +63,7 @@ public class TransferService {
     }
 
     // check security access on origin wallet
-    checkAccess(originWallet, businessContext);
+    walletService.checkAccess(originWallet, businessContext);
 
     // If origin and target currency not the same then convert
     BigDecimal amountToTransferConverted = transfer.getAmountTransferred();
@@ -130,14 +131,6 @@ public class TransferService {
           "Transfer from  " + transfer.getOriginEntityType() + " is not allowed",
           "TRANBUS01",
           HttpStatus.BAD_REQUEST);
-    }
-  }
-
-  private void checkAccess(Wallet wallet, BusinessContext businessContext)
-      throws SpendeskException {
-    if (!wallet.getCompanyIdentifier().equals(businessContext.getCompanyId())) {
-      throw new SpendeskException(
-          "This wallet doesn't belong to this company", "TRANSEC01", HttpStatus.NOT_FOUND);
     }
   }
 }

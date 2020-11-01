@@ -38,7 +38,7 @@ public class CardService {
     // Retrieve wallet to get back the currency
     Wallet wallet = walletService.findById(walletId);
 
-    checkWalletAccess(wallet, businessContext);
+    walletService.checkAccess(wallet, businessContext);
 
     return cardRepository.save(initCard(wallet, businessContext.getUserId()));
   }
@@ -48,14 +48,14 @@ public class CardService {
 
     Card card = this.findById(cardId);
     checkCardAccess(card, businessContext);
-    checkWalletAccess(walletService.findById(card.getWalletIdentifier()), businessContext);
+    walletService.checkAccess(walletService.findById(card.getWalletIdentifier()), businessContext);
     return this.updateBalance(card, amount, businessContext);
   }
 
   public List<Card> findByWalletIdentifier(String walletId, BusinessContext businessContext)
       throws SpendeskException {
     Wallet wallet = walletService.findById(walletId);
-    checkWalletAccess(wallet, businessContext);
+    walletService.checkAccess(wallet, businessContext);
 
     return cardRepository.findByWalletIdentifier(walletId);
   }
@@ -73,7 +73,7 @@ public class CardService {
       throws SpendeskException {
     Card card = findById(cardId);
     checkCardAccess(card, businessContext);
-    checkWalletAccess(walletService.findById(card.getWalletIdentifier()), businessContext);
+    walletService.checkAccess(walletService.findById(card.getWalletIdentifier()), businessContext);
 
     // If new status is block and card not already blocked, money should be transfer to wallet
     if (card.getStatus() != CardStatus.BLOCK && newCardStatus == CardStatus.BLOCK) {
@@ -93,16 +93,6 @@ public class CardService {
     return cardRepository.save(card);
   }
 
-  /*
-     A wallet access is define by the companyIdentifier
-  */
-  private void checkWalletAccess(Wallet wallet, BusinessContext businessContext)
-      throws SpendeskException {
-    if (!wallet.getCompanyIdentifier().equals(businessContext.getCompanyId())) {
-      throw new SpendeskException(
-          "This wallet doesn't belong to this company", "CARDSEC01", HttpStatus.NOT_FOUND);
-    }
-  }
   /*
      A card access is define by the userIdentifier
   */

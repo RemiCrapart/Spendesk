@@ -8,27 +8,15 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
-import org.zalando.jackson.datatype.money.MoneyModule;
 
 import java.math.BigDecimal;
 
-/*
- Limitation : you can do transfer only if the origin is in EUR because of api limitation
-
- Add userIdentifier on Transfer to keep it in db
- Add auditTable for updateBalance betweend card/wallet
-*/
 @SpringBootApplication
 @EnableAutoConfiguration
 public class WalletCardsApplication {
 
   public static void main(String[] args) {
     SpringApplication.run(WalletCardsApplication.class, args);
-  }
-
-  @Bean
-  public MoneyModule addMoneyModule() {
-    return new MoneyModule();
   }
 
   @Bean
